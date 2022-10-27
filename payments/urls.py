@@ -1,10 +1,8 @@
 __author__ = 'sayone'
 
-from django.conf.urls import url
-
 from django.urls import path
 
-from . import views
+from payments import views
 
 urlpatterns = [
     path('charge/', views.charge, name='charge'), # new

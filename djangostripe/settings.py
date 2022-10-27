@@ -51,8 +51,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 #Stripe Settings
-STRIPE_SECRET_KEY = 'sk_test_FUtiPyMTRKJZIfgnWSQy0OYf'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_F8r2qN0lXGSKTr9frPczhWtf'
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
+STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "")
 
 ROOT_URLCONF = 'djangostripe.urls'
 
@@ -79,15 +79,10 @@ WSGI_APPLICATION = 'djangostripe.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dstripe',
-
-            'USER': 'fmfb_user',
-            'PASSWORD': 'sayone',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
 }
 
 
